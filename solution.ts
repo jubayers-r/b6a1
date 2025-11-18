@@ -86,9 +86,10 @@ const getUniqueValues = <T extends number | string>(
   let exists: Record<number | string, boolean> = {};
   let filteredArr: T[] = [];
 
-  for (let item of arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let item = arr[i]!;
     if (!exists[item]) {
-      filteredArr.push(item);
+      filteredArr = [...filteredArr, item];
       exists[item] = true;
     }
   }
