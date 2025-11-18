@@ -95,22 +95,21 @@ const getUniqueValues = <T extends number | string>(
   return filteredArr;
 };
 
-const calculateTotalPrice = (
-  products: {
-    name: string;
-    price: number;
-    quantity: number;
-    discount?: number;
-  }[]
-) => {
+const calculateTotalPrice = <
+  T extends { name: string; price: number; quantity: number; discount?: number }
+>(
+  products: T[]
+): number => {
   let sum: number = 0;
 
-  products.forEach((element) => {
+  products.map((element) => {
     if (element.discount) {
       if (element.discount >= 0 && element.discount <= 100) {
         sum +=
           (element.price - (element.price * element.discount) / 100) *
           element.quantity;
+      } else {
+        throw new Error("Discount cannot be less than 0 and more than 100");
       }
     } else {
       sum += element.price * element.quantity;
