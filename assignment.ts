@@ -27,15 +27,6 @@ class Person {
   }
 }
 
-type Rating = number & { __brand: "Rating" };
-
-function createRating(value: number): Rating {
-  if (value < 1 || value > 5) {
-    throw new Error("Rating must be between 1 and 5");
-  }
-  return value as Rating;
-}
-
 const filterByRating = (
   books: {
     title: string;
@@ -50,7 +41,6 @@ const filterByRating = (
   });
 };
 
-const rating1 = Array.from({ length: 101 }, (_, i) => i);
 // problem 5
 
 const filterActiveUsers = (
