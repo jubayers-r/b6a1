@@ -13,7 +13,7 @@ const formatValue = (
 
 const getLength = (input: string | any[]): number => {
   if (typeof input === "string") {
-    return [...input].length;
+    return input.length;
   }
   if (Array.isArray(input)) {
     return input.length;
@@ -102,7 +102,7 @@ const calculateTotalPrice = <
 ): number => {
   let sum: number = 0;
 
-  products.map((element) => {
+  products.forEach((element) => {
     if (element.discount) {
       if (element.discount >= 0 && element.discount <= 100) {
         sum +=
