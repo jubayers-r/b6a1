@@ -8,6 +8,8 @@ const formatValue = (
       return input * 10;
     case "boolean":
       return !input;
+    default:
+      throw new Error("Unsupported type");
   }
 };
 
@@ -84,11 +86,10 @@ const getUniqueValues = <T extends number | string>(
   let exists: Record<number | string, boolean> = {};
   let filteredArr: T[] = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    let value = arr[i]!;
-    if (!exists[value]) {
-      filteredArr.push(value);
-      exists[value] = true;
+  for (let item of arr) {
+    if (!exists[item]) {
+      filteredArr.push(item);
+      exists[item] = true;
     }
   }
 
