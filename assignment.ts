@@ -33,7 +33,10 @@ const filterByRating = (
     title: string;
     rating: number;
   }[]
-) => {
+): {
+  title: string;
+  rating: number;
+}[] => {
   return books.filter((book) => {
     if (book.rating < 1 || book.rating > 5) {
       throw new Error(`Invalid rating: ${book.rating}`);
