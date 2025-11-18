@@ -45,8 +45,6 @@ const filterByRating = (
   });
 };
 
-// problem 5
-
 const filterActiveUsers = (
   users: {
     id: number;
@@ -54,7 +52,12 @@ const filterActiveUsers = (
     email: string;
     isActive: boolean;
   }[]
-) => {
+): {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+}[] => {
   return users.filter((user) => user.isActive === true);
 };
 
