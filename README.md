@@ -1,4 +1,4 @@
-# What are some differences between interfaces and types in TypeScript?
+# Q1: What are some differences between interfaces and types in TypeScript?
 
 ## বিভিন্ন ক্ষেত্রে টাইপস্ক্রিপ্টে Type এবং Interface এর পার্থক্য নিরূপণ করা হল:
 
@@ -117,7 +117,7 @@ class Dog implements Animal {
 
 - Type: যখন বেশি flexible structure দরকার — যেমন union, tuple, function type।
 
-# What is the use of the keyof keyword in TypeScript? Provide an example.
+# Q2: What is the use of the keyof keyword in TypeScript? Provide an example.
 
 ### TypeScript এ keyof কীওয়ার্ডের ব্যবহার
 
@@ -127,7 +127,6 @@ class Dog implements Animal {
 - মূলত, যখন আমরা চাই যে কোনো ফাংশন বা ভ্যারিয়েবল শুধুমাত্র একটি নির্দিষ্ট object-এর key-গুলোর মধ্যেই সীমাবদ্ধ থাকুক, তখন keyof ব্যবহার করা হয়।
 
 - বাস্তব উদাহরণ (Object থেকে value safely পড়া)
-  ✔ উদাহরণ:
 
 ```ts
 type Car = {
