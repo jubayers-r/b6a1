@@ -61,8 +61,6 @@ const filterActiveUsers = (
   return users.filter((user) => user.isActive === true);
 };
 
-// problem 6
-
 interface Book {
   title: string;
   author: string;
@@ -78,12 +76,13 @@ const printBookDetails = (book: Book) => {
   );
 };
 
-// problem 7
-
-const getUniqueValues = (arr1: number[], arr2: number[]) => {
+const getUniqueValues = <T extends number | string>(
+  arr1: T[],
+  arr2: T[]
+): T[] => {
   const arr = [...arr1, ...arr2];
-  let exists: Record<number, boolean> = {};
-  let filteredArr: number[] = [];
+  let exists: Record<number | string, boolean> = {};
+  let filteredArr: T[] = [];
 
   for (let i = 0; i < arr.length; i++) {
     let value = arr[i]!;
@@ -95,8 +94,6 @@ const getUniqueValues = (arr1: number[], arr2: number[]) => {
 
   return filteredArr;
 };
-
-// problem 8
 
 const calculateTotalPrice = (
   products: {
