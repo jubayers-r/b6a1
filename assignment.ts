@@ -100,20 +100,19 @@ const calculateTotalPrice = <
 >(
   products: T[]
 ): number => {
-  let sum: number = 0;
-
-  products.forEach((element) => {
-    if (element.discount) {
-      if (element.discount >= 0 && element.discount <= 100) {
-        sum +=
-          (element.price - (element.price * element.discount) / 100) *
-          element.quantity;
+  return products.reduce((sum, product) => {
+    if (product.discount) {
+      if (product.discount >= 0 && product.discount <= 100) {
+        return (
+          sum +
+          (product.price - (product.price * product.discount) / 100) *
+            product.quantity
+        );
       } else {
-        throw new Error("Discount cannot be less than 0 and more than 100");
+        throw new Error("Discount cannot be less than 0 or more than 100");
       }
     } else {
-      sum += element.price * element.quantity;
+      return sum + product.price * product.quantity;
     }
-  });
-  return sum;
+  }, 0);
 };
